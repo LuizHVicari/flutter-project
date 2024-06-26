@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:developer';
 
+import 'package:hello_world/pages/home_page.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -14,8 +16,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return
+      Scaffold(
         body: SingleChildScrollView(
           child: SizedBox(
             width: MediaQuery.of(context).size.width,
@@ -51,6 +53,9 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       if (email == 'email@email.com' && password == '1234') {
                         log('correto');
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => HomePage())
+                        );
                       } else {
                         log('incorreto');
                       }
@@ -62,7 +67,6 @@ class _LoginPageState extends State<LoginPage> {
             )
           ),
         ),
-      )
-    );
+      );
   }
 }
