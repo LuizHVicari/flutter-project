@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/app_controller.dart';
 import 'package:hello_world/widgets/switch_theme.dart';
+import 'package:hello_world/widgets/home_body.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,6 +11,8 @@ class HomePage extends StatefulWidget {
 } 
 
 class HomePageState extends State<HomePage> {
+  int counter = 0;
+
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
@@ -20,15 +23,14 @@ class HomePageState extends State<HomePage> {
           home: Scaffold(
             appBar: AppBar(
               title: const Text('Home Page'),
+              actions: [SwitchForTheme()],
             ),
-            body: Center(
-              child: SwitchForTheme()
-            ),
+            body: HomeBody(),
             floatingActionButton: FloatingActionButton(
               child: const Icon(Icons.add),
               onPressed: () {
                 setState(() {
-                  
+                  counter++;
                 });
               }
             )
