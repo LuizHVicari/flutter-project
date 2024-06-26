@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/app_controller.dart';
+import 'package:hello_world/pages/login_page.dart';
 import 'package:hello_world/widgets/switch_theme.dart';
 import 'package:hello_world/widgets/home_body.dart';
 
@@ -20,21 +21,11 @@ class HomePageState extends State<HomePage> {
       builder: (context, child) {
         return MaterialApp(
           theme: !AppController.instance.isDarkTheme ? ThemeData.light() : ThemeData.dark(),
-          home: Scaffold(
-            appBar: AppBar(
-              title: const Text('Home Page'),
-              actions: [SwitchForTheme()],
-            ),
-            body: HomeBody(),
-            floatingActionButton: FloatingActionButton(
-              child: const Icon(Icons.add),
-              onPressed: () {
-                setState(() {
-                  counter++;
-                });
-              }
-            )
-          )
+          initialRoute: '/',
+          routes: {
+            '/': (context) => const LoginPage(),
+            '/home': (context) => const HomeBody()
+          },
         );
       }
     );
